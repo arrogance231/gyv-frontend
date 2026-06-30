@@ -1,8 +1,20 @@
+import Link from "next/link";
+
 export default function MediaResources() {
   const items = [
-    { title: 'Press: Youth Stories', type: 'Article' },
-    { title: 'Short Film: Voices for Health', type: 'Video' },
-  ]
+    {
+      title: 'Press: Youth Stories',
+      type: 'Article',
+      slug: 'press-youth-stories',
+      summary: 'A feature article highlighting young advocates, data, and policy progress.',
+    },
+    {
+      title: 'Short Film: Voices for Health',
+      type: 'Video',
+      slug: 'short-film-voices-for-health',
+      summary: 'A short advocacy film with testimony, context, and calls to action.',
+    },
+  ];
 
   return (
     <main className="mx-auto max-w-5xl p-8">
@@ -14,11 +26,13 @@ export default function MediaResources() {
           <article key={it.title} className="rounded-lg border border-[#1D5975]/10 bg-white p-4 shadow-sm">
             <div className="text-sm font-semibold text-[#1D5975]">{it.type}</div>
             <h3 className="mt-2 text-lg font-bold">{it.title}</h3>
-            <p className="mt-2 text-sm text-[#272E3F]">Useful media assets or coverage to amplify the movement.</p>
-            <a href="#" className="mt-3 inline-block text-sm font-semibold text-[#1282AA]">View</a>
+            <p className="mt-2 text-sm text-[#272E3F]">{it.summary}</p>
+            <Link href={`/resources/media/${it.slug}`} className="mt-3 inline-block text-sm font-semibold text-[#1282AA]">
+              View
+            </Link>
           </article>
         ))}
       </div>
     </main>
-  )
+  );
 }
